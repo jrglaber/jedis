@@ -1,0 +1,45 @@
+<div class="card-header">Lista de Jedis</div>
+<div class="card-body">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Planeta</th>
+            <th>Mestre</th>
+            <th>Status</th>
+            <th>
+                <button type="button" (click)="newJedi(contentModal)" class="btn btn-sm btn-warning float-right">Novo Jedi</button>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let jedi of jedisArray">
+            <td>{{ jedi.name }}</td>
+            <td>{{ jedi.planet }}</td>
+            <td>{{ jedi.master }}</td>
+            <td>{{ jedi.status_description.description }}</td>
+            <td>
+                <div class="btn-group float-right">
+                    <button type="button" (click)="editJedi(contentModal, jedi)" class="btn btn-sm btn-warning">Editar</button>
+                    <button type="button" (click)="deleteJedi(jedi)" class="btn btn-sm btn-danger">Deletar</button>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<ng-template #contentModal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">{{titleModal}} Jedi</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <app-jedi [jedi]="jediSelected"></app-jedi>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Salvar</button>
+    </div>
+</ng-template>

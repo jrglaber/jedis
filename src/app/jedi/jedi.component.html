@@ -1,0 +1,21 @@
+<form *ngIf="jedi">
+  <fieldset class="form-group">
+    <label>Nome</label>
+    <input type="text" class="form-control" name="name" [(ngModel)]="jedi.name">
+  </fieldset>
+  <fieldset class="form-group">
+    <label>Planeta</label>
+    <input type="text" class="form-control" name="planet" [(ngModel)]="jedi.planet">
+  </fieldset>
+  <fieldset class="form-group">
+    <label>Mestre</label>
+    <input type="text" class="form-control" name="master" [(ngModel)]="jedi.master">
+  </fieldset>
+  <fieldset class="form-group">
+    <label>Status</label>
+    <select name="status" class="form-control" [(ngModel)]="jedi.status.id">
+      <option value=""></option>
+      <option *ngFor="let st of status | async" value="{{st.id}}">{{st.description}}</option>
+    </select>
+  </fieldset>
+</form>
